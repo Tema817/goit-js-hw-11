@@ -1,12 +1,25 @@
-import"./assets/modulepreload-polyfill-B5Qt9EMX.js";/* empty css                      */import{S as i}from"./assets/vendor-BFO1kwsm.js";const t=[{preview:"https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820__340.jpg",original:"https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820_1280.jpg",description:"Hokkaido Flower"},{preview:"https://cdn.pixabay.com/photo/2019/05/14/22/05/container-4203677__340.jpg",original:"https://cdn.pixabay.com/photo/2019/05/14/22/05/container-4203677_1280.jpg",description:"Container Haulage Freight"},{preview:"https://cdn.pixabay.com/photo/2019/05/16/09/47/beach-4206785__340.jpg",original:"https://cdn.pixabay.com/photo/2019/05/16/09/47/beach-4206785_1280.jpg",description:"Aerial Beach View"},{preview:"https://cdn.pixabay.com/photo/2016/11/18/16/19/flowers-1835619__340.jpg",original:"https://cdn.pixabay.com/photo/2016/11/18/16/19/flowers-1835619_1280.jpg",description:"Flower Blooms"},{preview:"https://cdn.pixabay.com/photo/2018/09/13/10/36/mountains-3674334__340.jpg",original:"https://cdn.pixabay.com/photo/2018/09/13/10/36/mountains-3674334_1280.jpg",description:"Alpine Mountains"},{preview:"https://cdn.pixabay.com/photo/2019/05/16/23/04/landscape-4208571__340.jpg",original:"https://cdn.pixabay.com/photo/2019/05/16/23/04/landscape-4208571_1280.jpg",description:"Mountain Lake Sailing"},{preview:"https://cdn.pixabay.com/photo/2019/05/17/09/27/the-alps-4209272__340.jpg",original:"https://cdn.pixabay.com/photo/2019/05/17/09/27/the-alps-4209272_1280.jpg",description:"Alpine Spring Meadows"},{preview:"https://cdn.pixabay.com/photo/2019/05/16/21/10/landscape-4208255__340.jpg",original:"https://cdn.pixabay.com/photo/2019/05/16/21/10/landscape-4208255_1280.jpg",description:"Nature Landscape"},{preview:"https://cdn.pixabay.com/photo/2019/05/17/04/35/lighthouse-4208843__340.jpg",original:"https://cdn.pixabay.com/photo/2019/05/17/04/35/lighthouse-4208843_1280.jpg",description:"Lighthouse Coast Sea"}],e=document.querySelector(".gallery"),n=t.map(({preview:o,original:p,description:a})=>`
-        <li class="gallery-item">
-          <a class="gallery-link" href="${p}">
-            <img
-              class="gallery-image"
-              src="${o}"
-              alt="${a}"
-           />
-         </a>
-       </li>
-     `).join("");e.innerHTML=n;new i(".gallery a",{captionsData:"alt",captionPosition:"bottom",captionDelay:250});
+import"./assets/modulepreload-polyfill-B5Qt9EMX.js";/* empty css                      */import{a as g,S as d,i}from"./assets/vendor-BB_gZR_J.js";const y="https://pixabay.com/api/",h="53361848-9c0672c52b1512c0ed401e412";async function f(a){const s={key:h,q:a,image_type:"photo",orientation:"horizontal",safesearch:!0},{data:e}=await g.get(y,{params:s});return e}const l=document.querySelector(".gallery"),n=document.querySelector(".loader"),b=new d(".gallery a",{captions:!0,captionsData:"alt",captionPosition:"bottom",captionDelay:250});function v(a){const s=a.map(({webformatURL:e,largeImageURL:o,tags:t,likes:c,views:m,comments:p,downloads:u})=>`
+      <li class="gallery-item">
+        <a class="gallery-link" href="${o}">
+          <img class="gallery-image" src="${e}" alt="${t}" loading="lazy" />
+        </a>
+        <div class="meta">
+          <div class="meta-item">
+            <span class="meta-label">Likes</span>
+            <span class="meta-value">${c}</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Views</span>
+            <span class="meta-value">${m}</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Comments</span>
+            <span class="meta-value">${p}</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Downloads</span>
+            <span class="meta-value">${u}</span>
+          </div>
+        </div>
+      </li>`).join("");l.insertAdjacentHTML("beforeend",s),b.refresh()}function w(){l.innerHTML=""}function L(){n.classList.remove("hidden"),n.setAttribute("aria-busy","true")}function S(){n.classList.add("hidden"),n.setAttribute("aria-busy","false")}const r=document.querySelector(".form");r.addEventListener("submit",async a=>{a.preventDefault();const e=(new FormData(r).get("search-text")||"").trim();if(!e){i.warning({title:"Warning",message:"Please enter a search query.",position:"topRight",timeout:2500});return}L(),w();try{const o=await f(encodeURIComponent(e)),{hits:t=[]}=o;if(!t.length){i.info({title:"No results",message:"Sorry, there are no images matching your search query. Please try again!",position:"topRight",messageColor:"#fafafb",messageSize:"16",backgroundColor:"#ef4040",progressBarColor:"#b51b1b",timeout:3e3,maxWidth:432});return}v(t),i.success({title:"Success",message:`Found ${t.length} images for "${e}".`,position:"topRight",timeout:2e3})}catch{i.error({title:"Error",message:"Something went wrong. Please try again later.",position:"topRight",timeout:3e3})}finally{S(),r.reset()}});
 //# sourceMappingURL=1-gallery.js.map
