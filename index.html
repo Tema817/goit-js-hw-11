@@ -2,30 +2,38 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/goit-js-hw-11/favicon.svg" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Homework#11</title>
-    <link rel="stylesheet" crossorigin href="/goit-js-hw-11/assets/styles-HHyYYu8p.css">
+    <title>Gallery</title>
+    <script type="module" crossorigin src="/goit-js-hw-11/assets/vendor-DvfmeZXB.js"></script>
+    <script type="module" crossorigin src="/goit-js-hw-11/assets/main-CUu3a5Y3.js"></script>
+    <link rel="stylesheet" crossorigin href="/goit-js-hw-11/assets/vendor-DumFYO8Z.css">
+    <link rel="stylesheet" crossorigin href="/goit-js-hw-11/assets/main-Cds0HWj-.css">
   </head>
   <body>
-    <header class="header">
-      <div class="container">
-        <nav class="nav">
-          <a class="nav-logo" href="./index.html" aria-label="Site logo">
-            <svg class="nav-logo-icon" width="100" height="30">
-              <use href="/goit-js-hw-11/assets/logo-MERo-cm8.svg"></use>
-            </svg>
-          </a>
-          <ul class="nav-list">
-            <li class="nav-item">
-              <a class="nav-link {=$highlight-act}" href="./1-gallery.html"
-                >Gallery</a
-              >
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-    <main></main>
+    <main>
+      <section>
+        <div class="container">
+          <form class="form" novalidate>
+            <!-- <a class="back-link" href="./index.html">Find your vibe</a> -->
+            <label>
+              <input
+                type="text"
+                name="search-text"
+                placeholder="Search images..."
+                required
+              />
+            </label>
+            <button type="submit">Search</button>
+          </form>
+          <span
+            class="loader hidden"
+            aria-live="polite"
+            aria-busy="false"
+          ></span>
+          <ul class="gallery"></ul>
+        </div>
+      </section>
+    </main>
   </body>
 </html>
